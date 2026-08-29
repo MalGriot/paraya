@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Paraya Project Brief</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f7f7f7;
+  --surface-dark:#1f2a2e;
+  --ink:#2e4052;
+  --ink-strong:#1f2a2e;
+  --ink-soft:rgba(46,64,82,.68);
+  --ink-faint:rgba(46,64,82,.44);
+  --terracotta:#b45f41;
+  --terracotta-soft:rgba(180,95,65,.10);
+  --gold:#f6b000;
+  --line:rgba(46,64,82,.14);
+  --line-strong:rgba(46,64,82,.28);
+  --on-dark:#f4f1ee;
+  --on-dark-soft:rgba(244,241,238,.72);
+  --serif:'EB Garamond', Georgia, 'Iowan Old Style', serif;
+  --sans:'Work Sans', -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181e21;
+    --bg-alt:#1f2629;
+    --surface-dark:#0f1315;
+    --ink:#d8dde1;
+    --ink-strong:#f2efe9;
+    --ink-soft:rgba(216,221,225,.72);
+    --ink-faint:rgba(216,221,225,.46);
+    --terracotta:#e0895f;
+    --terracotta-soft:rgba(224,137,95,.14);
+    --gold:#ffcf5c;
+    --line:rgba(216,221,225,.14);
+    --line-strong:rgba(216,221,225,.26);
+    --on-dark:#f2efe9;
+    --on-dark-soft:rgba(242,239,233,.72);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181e21;
+  --bg-alt:#1f2629;
+  --surface-dark:#0f1315;
+  --ink:#d8dde1;
+  --ink-strong:#f2efe9;
+  --ink-soft:rgba(216,221,225,.72);
+  --ink-faint:rgba(216,221,225,.46);
+  --terracotta:#e0895f;
+  --terracotta-soft:rgba(224,137,95,.14);
+  --gold:#ffcf5c;
+  --line:rgba(216,221,225,.14);
+  --line-strong:rgba(216,221,225,.26);
+  --on-dark:#f2efe9;
+  --on-dark-soft:rgba(242,239,233,.72);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--terracotta);}
+
+nav.toc{
+  position:sticky;top:0;z-index:10;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  padding:14px 24px;font-size:12.5px;
+  display:flex;justify-content:flex-end;
+}
+nav.toc a{color:var(--terracotta);text-decoration:none;font-weight:600;}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 120px;}
+
+/* ---- Cover ---- */
+.cover{
+  border-bottom:1px solid var(--line);
+  padding:64px 0 40px;
+  margin-bottom:56px;
+}
+.cover .kicker{
+  font-family:var(--sans);
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  font-weight:600;
+  margin:0 0 18px;
+}
+.cover h1{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:clamp(2.4rem,6vw,3.6rem);
+  line-height:1.04;
+  letter-spacing:-.01em;
+  margin:0 0 14px;
+  color:var(--ink-strong);
+  text-wrap:balance;
+}
+.cover .dek{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--ink-soft);
+  margin:0 0 32px;
+  max-width:52ch;
+}
+.meta{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:18px 28px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.meta div span{
+  display:block;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:4px;
+}
+.meta div strong{
+  font-weight:500;
+  font-size:14.5px;
+  color:var(--ink-strong);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---- Sections ---- */
+section{margin-bottom:56px;}
+.sec-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:20px;
+}
+.sec-num{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1rem;
+  color:var(--terracotta);
+  font-variant-numeric:tabular-nums;
+  min-width:1.6em;
+}
+.sec-head h2{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1.55rem;
+  margin:0;
+  color:var(--ink-strong);
+  text-wrap:balance;
+}
+section > p, .prose p{
+  max-width:64ch;
+  color:var(--ink);
+}
+.lede{
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  max-width:60ch;
+  margin-top:-8px;
+}
+
+/* ---- Cards / grids ---- */
+.grid{
+  display:grid;
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+}
+.grid.cols-2{grid-template-columns:1fr 1fr;}
+.card{
+  background:var(--bg);
+  padding:20px 22px;
+}
+.card h3{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:14.5px;
+  margin:0 0 6px;
+  color:var(--ink-strong);
+}
+.card p{
+  margin:0;
+  font-size:14px;
+  color:var(--ink-soft);
+}
+.card .tag{
+  display:inline-block;
+  font-size:10.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+@media (max-width:640px){
+  .grid.cols-2{grid-template-columns:1fr;}
+}
+
+/* ---- Sitemap list ---- */
+.sitemap{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.sitemap li{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:20px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+.sitemap li .page-name{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.02rem;
+  color:var(--ink-strong);
+}
+.sitemap li .page-desc{font-size:14px;color:var(--ink-soft);}
+@media (max-width:560px){
+  .sitemap li{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ---- Timeline ---- */
+.timeline{border-top:1px solid var(--line);}
+.tl-row{
+  display:grid;
+  grid-template-columns:130px 1fr;
+  gap:20px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+.tl-row .date{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:13px;
+  color:var(--terracotta);
+  padding-top:2px;
+}
+.tl-row .what strong{color:var(--ink-strong);font-weight:600;}
+.tl-row .what p{margin:2px 0 0;font-size:14px;color:var(--ink-soft);}
+@media (max-width:560px){
+  .tl-row{grid-template-columns:1fr;gap:2px;}
+}
+
+/* ---- Ownership table ---- */
+.owntable{width:100%;border-collapse:collapse;font-size:14px;}
+.owntable th{
+  text-align:left;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  font-weight:600;
+  padding:0 12px 10px 0;
+  border-bottom:1px solid var(--line-strong);
+}
+.owntable td{
+  padding:12px 12px 12px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--ink);
+  vertical-align:top;
+}
+.owntable td.who{color:var(--terracotta);font-weight:600;white-space:nowrap;}
+
+/* ---- Brand snapshot ---- */
+.swatches{display:flex;gap:0;border-radius:2px;overflow:hidden;border:1px solid var(--line);margin-bottom:16px;}
+.swatch{flex:1;padding:18px 14px;min-height:64px;display:flex;flex-direction:column;justify-content:flex-end;}
+.swatch .name{font-size:12px;font-weight:600;}
+.swatch .hex{font-size:11px;opacity:.85;font-variant-numeric:tabular-nums;}
+.wordmark-demo{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:2.2rem;
+  color:var(--ink-strong);
+  letter-spacing:-.01em;
+  margin:6px 0 4px;
+}
+.wordmark-demo .rt{color:var(--terracotta);}
+.type-sample{border:1px solid var(--line);border-radius:2px;padding:20px 22px;margin-bottom:14px;}
+.type-sample .label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+
+/* ---- Callout ---- */
+.callout{
+  background:var(--terracotta-soft);
+  border-left:3px solid var(--terracotta);
+  padding:16px 20px;
+  border-radius:0 2px 2px 0;
+  font-size:14.5px;
+  color:var(--ink);
+}
+.callout strong{color:var(--ink-strong);}
+
+/* ---- Open items ---- */
+.open-list{list-style:none;margin:0;padding:0;}
+.open-list li{
+  display:flex;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14.5px;
+}
+.open-list li:last-child{border-bottom:none;}
+.open-list .dot{
+  flex:none;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--terracotta);
+  margin-top:8px;
+}
+
+/* ---- Decisions ---- */
+.decision{
+  display:flex;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+.decision:last-child{border-bottom:none;}
+.decision .mark{
+  flex:none;
+  font-family:var(--serif);
+  font-weight:700;
+  color:var(--terracotta);
+}
+.decision p{margin:0;font-size:14.5px;color:var(--ink);}
+.decision strong{color:var(--ink-strong);}
+
+footer{
+  margin-top:80px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-size:12.5px;
+  color:var(--ink-faint);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+</style>
+</head>
+<body>
+
+<nav class="toc"><a href="brand-guidelines.html">← Brand Guidelines</a></nav>
+
+<div class="wrap">
+
+  <div class="cover">
+    <p class="kicker">Project Brief · Website Rebuild</p>
+    <h1>Paraya.com</h1>
+    <p class="dek">Shelter for the outliers — from single-purpose production site to the front door of six verticals, a merch line, and the Paya portal.</p>
+    <div class="meta">
+      <div><span>Prepared for</span><strong>Ritu Singhal, Paraya</strong></div>
+      <div><span>Prepared by</span><strong>Mal Griot</strong></div>
+      <div><span>Date</span><strong>29 Aug 2026</strong></div>
+      <div><span>Source</span><strong>28 Aug kickoff + discovery form</strong></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>What this is</h2></div>
+    <p class="lede">Paraya asked for a website rebuild — but the brief underneath it is bigger: unify six business lines, launch merch, and stand up a hidden gateway to a second product. This document sets the scope, sequence, and open questions before design and build begin.</p>
+    <p>Everything here is drawn from the 28 August kickoff call and the discovery form Ritu completed the same day. Where the two sources disagree or leave something open, it's flagged in <a href="#open">Section 10</a> rather than guessed at.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Goals &amp; primary action</h2></div>
+    <div class="grid cols-2">
+      <div class="card">
+        <span class="tag">Audience</span>
+        <h3>Brands &amp; clients</h3>
+        <p>The site is written and structured for people booking Paraya for work — not a general portfolio audience.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Primary action</span>
+        <h3>Book a consultation</h3>
+        <p>Every path on the site should have a short route back to the consultation booking flow.</p>
+      </div>
+    </div>
+    <p style="margin-top:20px;">Beyond that single conversion goal, the site needs to do three things at once: showcase the work and philosophy, sell merch, and hold the door open to Paya — without any one of the three crowding out the others.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Phase One sitemap</h2></div>
+    <p class="lede">Four core pages, plus three functional spaces layered across them.</p>
+    <ul class="sitemap">
+      <li><span class="page-name">Home</span><span class="page-desc">Hero space (see below), entry points into work, philosophy, and merch.</span></li>
+      <li><span class="page-name">About / Philosophy</span><span class="page-desc">Origin &amp; meaning of the name, the founding line, the six values.</span></li>
+      <li><span class="page-name">Work / Portfolio</span><span class="page-desc">Music videos, BTS, brand work, managed socials, fashion photography.</span></li>
+      <li><span class="page-name">Contact / Consultation Booking</span><span class="page-desc">Calendly-backed booking, routed from the primary CTA sitewide.</span></li>
+    </ul>
+    <div class="grid cols-2" style="margin-top:20px;">
+      <div class="card"><span class="tag">Also in Phase One</span><h3>Teaser space</h3><p>A holding space for the November teaser film — see Section 07 for what fills it before the film exists.</p></div>
+      <div class="card"><span class="tag">Also in Phase One</span><h3>Consultation ("para") sessions</h3><p>Space for the booking flow itself, distinct from the Contact page's static info.</p></div>
+      <div class="card"><span class="tag">Also in Phase One</span><h3>Merch</h3><p>Full catalogue-and-shoot presentation once the seven pieces are photographed — see Section 06.</p></div>
+      <div class="card"><span class="tag">Also in Phase One</span><h3>Paya gateway</h3><p>Not the full Paya experience — just the transition. See Section 08.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>The six verticals</h2></div>
+    <p class="lede">As of the August rebrand, Paraya operates across six lines. The site's job is to make all six legible from one home page, not just the production work it's historically been known for.</p>
+    <div class="grid cols-2">
+      <div class="card"><span class="tag">01</span><h3>CSR story sponsorship</h3><p>Brand-funded documentary work that reinvests in independent Indian filmmakers.</p></div>
+      <div class="card"><span class="tag">02</span><h3>Prime / Netflix projects</h3><p>Long-term, extended-format development for streaming platforms.</p></div>
+      <div class="card"><span class="tag">03</span><h3>Brand &amp; marketing work</h3><p>The core commercial engine — content, campaigns, corporate film, podcasts.</p></div>
+      <div class="card"><span class="tag">04</span><h3>Merch</h3><p>Seven-piece made-to-order line launching mid-October.</p></div>
+      <div class="card"><span class="tag">05</span><h3>Events</h3><p>Festivals, hospitality &amp; F&amp;B coverage, live experiences.</p></div>
+      <div class="card"><span class="tag">06</span><h3>Paya, the tech portal</h3><p>Marketplace connecting talent, crew, creations, locations and gear.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Homepage hero, before the film exists</h2></div>
+    <p>The November teaser film is funding-dependent, so the homepage needs a hero that doesn't wait on it. Ritu's direction: something <strong style="color:var(--ink-strong);">interactive, signaling "shelter for the outliers"</strong> and playing on Paraya's layered meanings — not a static placeholder image standing in for the eventual film.</p>
+    <div class="callout">No preferred image, video, or reference direction has been supplied yet — Ritu is compiling reference links to share via a WhatsApp drive folder. Treat the hero concept as open until that arrives.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Merch</h2></div>
+    <p class="lede">Seven pieces, made-to-order, roughly three-day turnaround: bomber, baby tee, vest, muscle tee, long shirt, sari-jeans.</p>
+    <div class="grid cols-2">
+      <div class="card"><span class="tag">Launch</span><h3>Mid-October 2026</h3><p>Full concept-and-catalogue shoot planned once pieces are ready, launching simultaneously on Instagram and the site.</p></div>
+      <div class="card"><span class="tag">Sales channel</span><h3>Direct on Paraya.com</h3><p>No external storefront. Payment processor not yet decided — see Section 10.</p></div>
+    </div>
+    <p style="margin-top:16px;">Ritu also asked for a <strong style="color:var(--ink-strong);">Linktree-style toggle</strong> from Instagram into the site — a lightweight nav layer worth designing alongside the merch page rather than bolting on separately.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Paya gateway</h2></div>
+    <p>Confirmed as permanent brand behavior, not a one-off Easter egg: clicking the "Paraya" portion of the wordmark routes to a separate Paya destination, with a color shift signaling the change of context — slate/terracotta outward, shifting on arrival at Paya.</p>
+    <div class="callout"><strong>Phase One scope:</strong> design and build only the transition/gateway moment, not the full Paya product experience. Paya itself is being built in parallel and is targeted to be ready in roughly 60 days from kickoff.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Brand snapshot</h2></div>
+    <p class="lede">Full detail lives in the <a href="brand-guidelines.html">Paraya Brand Guidelines (v1.0)</a>. This is the quick-reference slice relevant to building the site.</p>
+
+    <div class="swatches">
+      <div class="swatch" style="background:#2e4052;color:#f4f1ee;"><span class="name">Outsider Slate</span><span class="hex">#2E4052 · locked</span></div>
+      <div class="swatch" style="background:#b45f41;color:#f4f1ee;"><span class="name">Found Terracotta</span><span class="hex">#B45F41 · locked</span></div>
+      <div class="swatch" style="background:#1f2a2e;color:#f4f1ee;"><span class="name">Cinema Charcoal</span><span class="hex">#1F2A2E</span></div>
+      <div class="swatch" style="background:#f7f7f7;color:#2e4052;"><span class="name">Quiet Grey</span><span class="hex">#F7F7F7</span></div>
+      <div class="swatch" style="background:#f6b000;color:#1f2a2e;"><span class="name">Spark Gold</span><span class="hex">#F6B000 · provisional</span></div>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-faint);margin-top:-8px;">Ratio guide: ~65% white/grey, ~25% slate or charcoal, ~10% terracotta. Terracotta marks a moment — it never anchors a large surface.</p>
+
+    <div class="type-sample">
+      <div class="label">Display — EB Garamond Extra Bold (locked)</div>
+      <div class="wordmark-demo">Pa<span class="rt">RT</span>aya</div>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft);">The wordmark itself is hand-lettered, not set type — EB Garamond Extra Bold carries the voice everywhere the logo can't reach: headlines, decks, the tagline arc.</p>
+    </div>
+    <div class="type-sample">
+      <div class="label">Workhorse UI sans — not yet locked</div>
+      <p style="margin:0;font-size:14.5px;">The live temporary site runs on Manrope; the guidelines flag this as a placeholder, not brand spec. <strong style="color:var(--ink-strong);">Open decision:</strong> pick a plain, quiet sans for buttons, forms, and dense UI text before the rebuild's component library is set — see Section 10.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Voice, in three lines</h2></div>
+    <p class="lede">Introspective and poetic, but never precious. Paraya writes like it's talking to one person, not a market segment.</p>
+    <div class="grid cols-2">
+      <div class="card"><h3>Do</h3><p>Short declarative sentences, then one longer one that breathes. "We" and "you" — the client is a partner. Ground abstract values in a concrete action.</p></div>
+      <div class="card"><h3>Don't</h3><p>Agency jargon — "synergy," "content ecosystem." Superlatives stacked on superlatives. Poetic language standing in for a concrete claim about the work.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">10</span><h2 id="open">Tooling &amp; ownership</h2></div>
+    <p class="lede">Who supplies what, and which tools are already decided versus left to a recommendation.</p>
+    <table class="owntable">
+      <tr><th>Item</th><th>Owner / choice</th></tr>
+      <tr><td>Website copy</td><td class="who">Ritu</td></tr>
+      <tr><td>Project descriptions</td><td class="who">Kareena</td></tr>
+      <tr><td>Images / video</td><td class="who">Kareena</td></tr>
+      <tr><td>Team information</td><td class="who">Kareena</td></tr>
+      <tr><td>Merch information</td><td class="who">Ritu &amp; Kareena</td></tr>
+      <tr><td>Consultation booking</td><td class="who">Calendly</td></tr>
+      <tr><td>Hosting, CMS, analytics</td><td class="who">Recommend</td></tr>
+      <tr><td>Payments / e-commerce</td><td class="who">Recommend</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Decisions already made</h2></div>
+    <div class="decision"><span class="mark">→</span><p><strong>Domain:</strong> the new build ships on <strong style="color:var(--ink-strong);">Paraya.com</strong>, dropping the Paraya Productions domain entirely.</p></div>
+    <div class="decision"><span class="mark">→</span><p><strong>Merch channel:</strong> sold direct on Paraya.com, not through an external storefront.</p></div>
+    <div class="decision"><span class="mark">→</span><p><strong>Paya gateway:</strong> the color-shift click-through is permanent brand behavior, not a launch-only flourish.</p></div>
+    <div class="decision"><span class="mark">→</span><p><strong>Build approach:</strong> phased — Phase One covers the four core pages plus teaser, booking, merch, and gateway spaces; the full Paya product is a later phase.</p></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Timeline</h2></div>
+    <div class="timeline">
+      <div class="tl-row"><div class="date">28 Aug 2026</div><div class="what"><strong>Kickoff</strong><p>Brand story, verticals, merch and Paya walked through with Ritu.</p></div></div>
+      <div class="tl-row"><div class="date">~12 Oct 2026</div><div class="what"><strong>45 days out — Merch + Paya target</strong><p>Ritu's stated target for both launching. See flag below — this sits ahead of Paya's separately-quoted 60-day estimate.</p></div></div>
+      <div class="tl-row"><div class="date">Mid-Oct 2026</div><div class="what"><strong>Merch launch</strong><p>Seven pieces live, concept shoot complete, Instagram + site simultaneous.</p></div></div>
+      <div class="tl-row"><div class="date">~27 Oct 2026</div><div class="what"><strong>60 days out — Paya ready</strong><p>Ritu's target for Paya itself being built and ready, with everything "up and running" by this point.</p></div></div>
+      <div class="tl-row"><div class="date">Late Nov 2026</div><div class="what"><strong>Teaser film</strong><p>Funding-dependent — first real test of the imagery direction on the live site.</p></div></div>
+    </div>
+    <div class="callout" style="margin-top:16px;"><strong>Flag:</strong> the discovery form names two different countdowns from kickoff — 45 days for "Merch and Paya," and a separately-quoted 60 days for Paya specifically. Worth confirming which one is load-bearing before the build schedule is locked.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Open questions</h2></div>
+    <ul class="open-list">
+      <li><span class="dot"></span>Reference links for launch projects and hero direction — Ritu is compiling a WhatsApp drive folder; not yet received.</li>
+      <li><span class="dot"></span>Payment processor for merch — "whatever's cheaper and easier to track," not yet named.</li>
+      <li><span class="dot"></span>Workhorse UI sans to pair with EB Garamond — current site's Manrope is a placeholder, flagged for replacement.</li>
+      <li><span class="dot"></span>Hosting, CMS, and analytics — open to recommendation, not yet chosen.</li>
+      <li><span class="dot"></span>Homepage hero concept — interactive, "shelter for the outliers," but no visual direction locked yet.</li>
+      <li><span class="dot"></span>45-day vs. 60-day timeline conflict for Merch/Paya — see Section 12.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Paraya Project Brief · v1.0</span>
+    <a href="brand-guidelines.html">See the Brand Guidelines →</a>
+  </footer>
+
+</div>
+</body>
+</html>

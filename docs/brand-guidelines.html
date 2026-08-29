@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Paraya Brand Guidelines</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f7f7f7;
+  --surface-dark:#1f2a2e;
+  --ink:#1f2a2e;
+  --ink-soft:rgba(31,42,46,.68);
+  --ink-faint:rgba(31,42,46,.44);
+  --slate:#2e4052;
+  --terracotta:#b45f41;
+  --terracotta-soft:rgba(180,95,65,.12);
+  --terracotta-line:rgba(180,95,65,.35);
+  --gold:#f6b000;
+  --line:rgba(46,64,82,.14);
+  --line-strong:rgba(46,64,82,.28);
+  --on-dark:#f4f1ee;
+  --on-dark-soft:rgba(244,241,238,.72);
+  --shadow: 0 1px 2px rgba(31,42,46,.06);
+  --serif:'EB Garamond', Georgia, 'Iowan Old Style', serif;
+  --sans:'Manrope', -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1b2124; --bg-alt:#20272a; --surface-dark:#121618;
+    --ink:#f2efe9; --ink-soft:rgba(242,239,233,.72); --ink-faint:rgba(242,239,233,.46);
+    --slate:#b7c3cb; --terracotta:#e08862; --terracotta-soft:rgba(224,136,98,.14);
+    --terracotta-line:rgba(224,136,98,.4); --gold:#ffcf5c;
+    --line:rgba(242,239,233,.14); --line-strong:rgba(242,239,233,.26);
+    --on-dark:#f2efe9; --on-dark-soft:rgba(242,239,233,.72);
+    --shadow: 0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1b2124; --bg-alt:#20272a; --surface-dark:#121618;
+  --ink:#f2efe9; --ink-soft:rgba(242,239,233,.72); --ink-faint:rgba(242,239,233,.46);
+  --slate:#b7c3cb; --terracotta:#e08862; --terracotta-soft:rgba(224,136,98,.14);
+  --terracotta-line:rgba(224,136,98,.4); --gold:#ffcf5c;
+  --line:rgba(242,239,233,.14); --line-strong:rgba(242,239,233,.26);
+  --on-dark:#f2efe9; --on-dark-soft:rgba(242,239,233,.72);
+  --shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 140px;}
+a{color:var(--terracotta);}
+
+/* Nav */
+nav.toc{
+  position:sticky;top:0;z-index:10;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  padding:14px 24px;font-size:12.5px;
+  display:flex;gap:18px;flex-wrap:wrap;overflow-x:auto;
+  white-space:nowrap;
+}
+nav.toc a{color:var(--ink-soft);text-decoration:none;letter-spacing:.02em;}
+nav.toc a:hover{color:var(--terracotta);}
+
+/* Cover */
+.cover{padding:72px 0 44px;border-bottom:1px solid var(--line);margin-bottom:56px;}
+.cover .kicker{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);font-weight:700;margin:0 0 22px;}
+.cover .word{font-family:var(--serif);font-weight:800;font-size:clamp(3rem,9vw,5.5rem);line-height:.95;letter-spacing:-.01em;margin:0;color:var(--ink);}
+.cover .word .fade{opacity:.4;}
+.cover .tagline{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--ink-soft);margin:20px 0 36px;}
+.cover .lede{max-width:60ch;color:var(--ink-soft);margin-bottom:40px;}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:18px 28px;padding-top:24px;border-top:1px solid var(--line);}
+.meta div span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+.meta div strong{font-weight:600;font-size:14.5px;color:var(--ink);}
+
+/* Sections */
+section{margin-bottom:64px;scroll-margin-top:64px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;}
+.sec-num{font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--terracotta);min-width:1.6em;}
+.sec-head h2{font-family:var(--serif);font-weight:700;font-size:1.7rem;margin:0;color:var(--ink);}
+section > p.lede{font-size:1.02rem;color:var(--ink-soft);max-width:62ch;margin-top:-10px;}
+.prose p{max-width:64ch;}
+
+blockquote{
+  font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.4;
+  color:var(--ink);border-left:3px solid var(--terracotta);
+  margin:28px 0;padding:4px 0 4px 22px;max-width:56ch;
+}
+
+/* Origin diagram */
+.origin-pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:24px 0;}
+.origin-card{background:var(--bg);padding:24px 26px;}
+.origin-card .word{font-family:var(--serif);font-weight:800;font-size:1.5rem;color:var(--slate);}
+.origin-card .sub{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:4px 0 12px;}
+.origin-card p{margin:0;font-size:14px;color:var(--ink-soft);}
+@media (max-width:600px){.origin-pair{grid-template-columns:1fr;}}
+
+.wordplay-demo{font-family:var(--serif);font-weight:800;font-size:2.4rem;color:var(--ink);margin:20px 0 8px;}
+.wordplay-demo .rt{color:var(--terracotta);}
+
+/* Values grid */
+.values{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);}
+.values .value{background:var(--bg);padding:20px 22px;display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline;}
+.values .value .tag{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta);font-weight:700;}
+.values .value h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:0 0 4px;color:var(--ink);}
+.values .value p{margin:0;font-size:14px;color:var(--ink-soft);}
+@media (max-width:600px){.values .value{grid-template-columns:1fr;gap:4px;}}
+
+/* Voice */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.grid2 .card{background:var(--bg);padding:22px 24px;}
+.grid2 .card h3{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 14px;color:var(--ink);}
+.grid2 .card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+.grid2 .card li{font-size:14.5px;color:var(--ink-soft);padding-left:16px;position:relative;}
+.grid2 .card li::before{content:"—";position:absolute;left:0;color:var(--terracotta);}
+@media (max-width:600px){.grid2{grid-template-columns:1fr;}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px;}
+.chip{font-size:12px;padding:6px 14px;border:1px solid var(--line-strong);border-radius:20px;color:var(--ink-soft);}
+
+/* Verticals */
+.verticals{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.vertical{background:var(--bg);padding:22px 24px;}
+.vertical .num{font-family:var(--serif);font-weight:700;color:var(--terracotta);font-size:.95rem;}
+.vertical h3{font-family:var(--serif);font-weight:700;font-size:1.1rem;margin:6px 0 6px;color:var(--ink);}
+.vertical p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+@media (max-width:600px){.verticals{grid-template-columns:1fr;}}
+
+/* Color */
+.swatches-lg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px;}
+.swatch-lg{padding:36px 26px 22px;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;}
+.swatch-lg .name{font-family:var(--serif);font-weight:700;font-size:1.2rem;}
+.swatch-lg .hex{font-size:12px;opacity:.85;margin:4px 0 8px;}
+.swatch-lg .role{font-size:13px;opacity:.85;max-width:32ch;}
+@media (max-width:600px){.swatches-lg{grid-template-columns:1fr;}}
+
+.swatches-sm{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:16px;}
+.swatch-sm{padding:18px 14px;min-height:76px;display:flex;flex-direction:column;justify-content:flex-end;}
+.swatch-sm .name{font-size:12px;font-weight:700;}
+.swatch-sm .hex{font-size:10.5px;opacity:.85;}
+@media (max-width:600px){.swatches-sm{grid-template-columns:1fr 1fr;}}
+
+.ratio-bar{display:flex;height:28px;border-radius:2px;overflow:hidden;margin:20px 0 8px;border:1px solid var(--line);}
+.ratio-bar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff;}
+
+/* Type */
+.type-sample{border:1px solid var(--line);border-radius:2px;padding:26px 28px;margin-bottom:16px;}
+.type-sample .label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px;display:flex;justify-content:space-between;}
+.type-sample .flag{color:var(--terracotta);font-weight:700;}
+.display-xl{font-family:var(--serif);font-weight:800;font-size:2.4rem;line-height:1.05;margin:0 0 10px;color:var(--ink);}
+.italic-lg{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.3rem;color:var(--ink);margin:0;}
+.body-sample{font-family:var(--serif);font-size:1.05rem;color:var(--ink);max-width:56ch;margin:0;}
+.note{font-size:13px;color:var(--ink-faint);margin-top:14px;}
+
+/* Logo */
+.wordplay-block{border:1px solid var(--line);padding:32px 28px;text-align:center;margin:24px 0;}
+.mono-demo{font-family:var(--serif);font-weight:800;font-size:3rem;display:inline-flex;gap:20px;margin:16px 0;}
+.mono-tile{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.8rem;}
+
+/* Never list */
+.never-list{list-style:none;margin:0;padding:0;}
+.never-list li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink-soft);}
+.never-list li:last-child{border-bottom:none;}
+.never-list .x{color:var(--terracotta);font-weight:700;flex:none;}
+
+/* Imagery */
+.imagery-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.imagery-card{background:var(--bg);padding:22px 22px;}
+.imagery-card .tag{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta);font-weight:700;margin-bottom:8px;display:block;}
+.imagery-card h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:0 0 6px;color:var(--ink);}
+.imagery-card p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+@media (max-width:700px){.imagery-grid{grid-template-columns:1fr;}}
+
+/* Applications timeline */
+.app-row{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);}
+.app-row .when{font-size:12.5px;font-weight:700;color:var(--terracotta);letter-spacing:.02em;padding-top:2px;}
+.app-row h3{font-family:var(--serif);font-weight:700;font-size:1.05rem;margin:0 0 4px;color:var(--ink);}
+.app-row p{margin:0;font-size:14px;color:var(--ink-soft);}
+@media (max-width:560px){.app-row{grid-template-columns:1fr;gap:4px;}}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin:20px 0;}
+.contact-grid div span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+.contact-grid div strong{font-family:var(--serif);font-size:1.05rem;color:var(--ink);font-weight:600;}
+.status-note{background:var(--terracotta-soft);border-left:3px solid var(--terracotta);padding:16px 20px;border-radius:0 2px 2px 0;font-size:14px;color:var(--ink);margin-top:24px;}
+
+footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <a href="#origin">01 Origin</a>
+  <a href="#philosophy">02 Philosophy</a>
+  <a href="#voice">03 Voice</a>
+  <a href="#verticals">04 Verticals</a>
+  <a href="#color">05 Color</a>
+  <a href="#type">06 Type</a>
+  <a href="#logo">07 Logo</a>
+  <a href="#imagery">08 Imagery</a>
+  <a href="#applications">09 Applications</a>
+  <a href="#contact">10 Contact</a>
+  <a href="Paraya_Brand_Guidelines.pdf" style="margin-left:auto;">PDF (with logo art) ↓</a>
+  <a href="project-brief.html" style="color:var(--terracotta);font-weight:600;">Project Brief →</a>
+</nav>
+
+<div class="wrap">
+
+  <div class="cover">
+    <p class="kicker">Brand Guidelines · v1.0</p>
+    <h1 class="word">Para<span class="fade">ya</span>.</h1>
+    <p class="tagline">Shelter for the outliers.</p>
+    <p class="lede">Paraya is a media production studio built on one conviction: the outsider's view is the truest one. These guidelines set down how that conviction should look, sound, and behave — in a deck, on a set, on a hoodie, or on the tech portal to come.</p>
+    <div class="meta">
+      <div><span>Studio</span><strong>Paraya Media Production</strong></div>
+      <div><span>Base</span><strong>Pune, India</strong></div>
+      <div><span>Founder</span><strong>Ritu Singhal</strong></div>
+      <div><span>Prepared</span><strong>28 Aug 2026</strong></div>
+    </div>
+  </div>
+
+  <section id="origin">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Origin &amp; meaning</h2></div>
+    <p class="lede">The name is the brand strategy. Everything else in this document is downstream of it.</p>
+    <div class="prose">
+      <p><strong>Paraya</strong> means outsider: someone who stands apart, who sees differently. The word carries roots that run deeper than a tagline — echoes of the Banjara, India's nomadic drumming communities, and of the Hindi sense of being "outside the family." It is not a wound. It is a vantage point.</p>
+    </div>
+    <blockquote>"Being Paraya is not about being excluded. It is about choosing authenticity over conformity."</blockquote>
+
+    <div class="origin-pair">
+      <div class="origin-card">
+        <div class="word">Paraya</div>
+        <div class="sub">The outsider</div>
+        <p>Stands apart. Sees differently. Refuses to blend in. The starting condition — the raw material every client, creator and crew member brings into the studio.</p>
+      </div>
+      <div class="origin-card">
+        <div class="word">Paya (पाया)</div>
+        <div class="sub">The one who found</div>
+        <p>To find. To discover. To arrive. Paraya's work is the mechanism that moves someone from the left column to the right — from unseen to understood.</p>
+      </div>
+    </div>
+
+    <p>The wordmark carries the same idea one layer deeper: set as "Pa<strong style="color:var(--terracotta);">RT</strong>aya," it hides the word <strong style="color:var(--terracotta);">ART</strong> inside Paraya, capitalized, unmissable once you see it.</p>
+    <div class="wordplay-demo">Pa<span class="rt">RT</span>aya</div>
+    <p class="note" style="max-width:64ch;">On the live site, clicking the "Paraya" portion of the header also routes to a separate Paya destination (the tech/talent marketplace) with an accompanying color shift that signals the change of context. Treat both as permanent pieces of brand behavior, not one-off details.</p>
+  </section>
+
+  <section id="philosophy">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Philosophy</h2></div>
+    <p class="lede">Founding line, stated in full — every value below is that sentence, expanded.</p>
+    <blockquote>"Courage, originality, honest expression."</blockquote>
+    <div class="values">
+      <div class="value"><span class="tag">Foundation</span><div><h3>Think before we create</h3><p>No content for content's sake. Every project opens with listening — to story, audience, purpose.</p></div></div>
+      <div class="value"><span class="tag">Core</span><div><h3>Storytelling first</h3><p>Narratives that connect emotionally and outlast the scroll, not just visuals.</p></div></div>
+      <div class="value"><span class="tag">Relationship</span><div><h3>Partners, not vendors</h3><p>We work as an extension of the client's team. Their goals become our goals.</p></div></div>
+      <div class="value"><span class="tag">Process</span><div><h3>Craft over templates</h3><p>No copy-paste formulas. Every frame is custom-built for the brand it serves.</p></div></div>
+      <div class="value"><span class="tag">Impact</span><div><h3>Creativity with results</h3><p>Aesthetics matter. Visibility, engagement and growth matter more.</p></div></div>
+      <div class="value"><span class="tag">Identity</span><div><h3>Rooted in authenticity</h3><p>Individuality is never diluted to fit a trend. Stand out by being real.</p></div></div>
+      <div class="value"><span class="tag">Delivery</span><div><h3>End-to-end execution</h3><p>Concept, camera, campaign — one team carries the full journey.</p></div></div>
+      <div class="value"><span class="tag">Community</span><div><h3>A shelter, in practice</h3><p>Every spend also reinvests in new Indian filmmakers. One brief, two outcomes.</p></div></div>
+    </div>
+  </section>
+
+  <section id="voice">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Voice &amp; tone</h2></div>
+    <p class="lede">Introspective and poetic, but never precious. Paraya writes like it's talking to one person, not a market segment.</p>
+    <div class="chips">
+      <span class="chip">Introspective</span><span class="chip">Direct</span><span class="chip">Cinematic</span>
+      <span class="chip">Unhurried</span><span class="chip">Warm, not sentimental</span><span class="chip">Confident without volume</span>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Do</h3>
+        <ul>
+          <li>Write short declarative sentences, then let one longer one breathe.</li>
+          <li>Use "we" and speak to "you" — the client is a partner, addressed directly.</li>
+          <li>Let a sentence fragment land on its own. Like this.</li>
+          <li>Ground abstract values in a concrete action: "no copy-paste formulas."</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Don't</h3>
+        <ul>
+          <li>Reach for agency jargon: "synergy," "content ecosystem," "value-add."</li>
+          <li>Oversell with superlatives stacked on superlatives.</li>
+          <li>Flatten "outsider" into generic quirky-brand irreverence.</li>
+          <li>Let poetic language replace a concrete claim about the work.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="verticals">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The six verticals</h2></div>
+    <p class="lede">Paraya is no longer just a production house. As of the August 2026 rebrand, the studio operates across six lines. These guidelines apply to all of them equally.</p>
+    <div class="verticals">
+      <div class="vertical"><span class="num">01</span><h3>CSR story sponsorship</h3><p>Brand-funded documentary work that reinvests in independent Indian filmmakers — the studio's founding "one spend, two outcomes" model.</p></div>
+      <div class="vertical"><span class="num">02</span><h3>Long-term Prime / Netflix projects</h3><p>Extended-format development for streaming platforms — Paraya's move from single campaigns into sustained IP.</p></div>
+      <div class="vertical"><span class="num">03</span><h3>Brand &amp; marketing work</h3><p>The core commercial engine: content, campaigns, corporate film and podcast production for ongoing client relationships.</p></div>
+      <div class="vertical"><span class="num">04</span><h3>Merch</h3><p>A seven-piece made-to-order line (bomber, baby tee, vest, muscle tee, long shirt, sari-jeans) launching mid-October, ~3 day turnaround.</p></div>
+      <div class="vertical"><span class="num">05</span><h3>Events</h3><p>Music festivals, hospitality and F&amp;B coverage, and live experiences captured in Paraya's documentary style.</p></div>
+      <div class="vertical"><span class="num">06</span><h3>Paya, the tech portal</h3><p>A copyrighted marketplace connecting talent, crew, creations, locations and gear across media production. The "found" half of the brand, built as a product.</p></div>
+    </div>
+  </section>
+
+  <section id="color">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Color</h2></div>
+    <p class="lede">Two colors, locked by Ritu's own spec sheet. Slate is the outsider's distance; terracotta is the warmth of being found. Everything else below is a working extension, not canon.</p>
+    <div class="swatches-lg">
+      <div class="swatch-lg" style="background:#2e4052;color:#f4f1ee;">
+        <div class="name">Outsider Slate</div><div class="hex">#2E4052 · locked</div>
+        <div class="role">Primary ink. The wordmark, body text, dark surfaces — the studio's default voice.</div>
+      </div>
+      <div class="swatch-lg" style="background:#b45f41;color:#f4f1ee;">
+        <div class="name">Found Terracotta</div><div class="hex">#B45F41 · locked</div>
+        <div class="role">The one warm note — the ring-and-tassel mark, the tagline, CTAs, the moment of discovery.</div>
+      </div>
+    </div>
+    <p class="note" style="max-width:64ch;margin-bottom:8px;">Extended palette: pulled from the live build, useful for backgrounds and hierarchy, but not part of the locked sheet. Confirm with Ritu before treating any of these as permanent.</p>
+    <div class="swatches-sm">
+      <div class="swatch-sm" style="background:#ffffff;color:#2e4052;border-right:1px solid var(--line);"><span class="name">Shelter White</span><span class="hex">#FFFFFF</span></div>
+      <div class="swatch-sm" style="background:#1f2a2e;color:#f4f1ee;"><span class="name">Cinema Charcoal</span><span class="hex">#1F2A2E</span></div>
+      <div class="swatch-sm" style="background:#f6b000;color:#1f2a2e;"><span class="name">Spark Gold</span><span class="hex">#F6B000</span></div>
+      <div class="swatch-sm" style="background:#f7f7f7;color:#2e4052;"><span class="name">Quiet Grey</span><span class="hex">#F7F7F7</span></div>
+    </div>
+    <div class="ratio-bar">
+      <span style="width:65%;background:#c9c9c9;color:#2e4052;">White / grey · 65%</span>
+      <span style="width:25%;background:#2e4052;">Slate / charcoal · 25%</span>
+      <span style="width:10%;background:#b45f41;">Terracotta · 10%</span>
+    </div>
+    <p class="note">Terracotta should never anchor a large surface. It marks a moment, not a mood.</p>
+  </section>
+
+  <section id="type">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Typography</h2></div>
+    <p class="lede">EB Garamond Extra Bold is the locked brand typeface, straight from Ritu's spec sheet. The wordmark itself is hand-lettered, not set type — EB Garamond is what carries the voice everywhere the logo can't reach.</p>
+
+    <div class="type-sample">
+      <div class="label"><span>EB Garamond, Extra Bold</span><span style="color:var(--terracotta);">Locked</span></div>
+      <p class="display-xl">Shelter for the outliers</p>
+      <p class="note" style="margin-top:0;">Display headlines, pull quotes, the tagline treatment. Use at large display sizes — Extra Bold only, it's a display cut, not a text weight.</p>
+    </div>
+
+    <div class="type-sample">
+      <div class="label"><span>EB Garamond, Regular / Italic</span><span class="flag">Working extension</span></div>
+      <p class="italic-lg">Every story deserves a place to belong.</p>
+      <p class="note" style="margin-top:14px;">Long-form body copy, captions, the tagline arc's italic. Not in the locked sheet — Ritu specified Extra Bold only. Recommended so the family reads at body sizes; confirm before adopting.</p>
+    </div>
+
+    <div class="status-note">The live parayaproductions.com build currently runs on <strong>Manrope</strong>, a geometric sans, for all UI text. That's a placeholder from the temporary site, not the brand spec — flag it for replacement when the Paraya.com rebuild starts. Where a UI needs a workhorse sans EB Garamond can't provide (buttons, form fields, dense data), pair it with a plain, quiet sans rather than reaching for Manrope by default. Confirm the choice with Ritu rather than carrying the placeholder forward by habit.</div>
+  </section>
+
+  <section id="logo">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Logo &amp; mark</h2></div>
+    <p class="lede">Hand-lettered, not set in type — that's the point. A studio built on refusing templates doesn't logo itself in a template font.</p>
+
+    <div class="wordplay-block">
+      <div class="note" style="text-transform:uppercase;letter-spacing:.08em;font-size:11px;">The wordplay</div>
+      <div class="mono-demo">Pa<span style="color:var(--terracotta);">RT</span>aya</div>
+      <p style="max-width:52ch;margin:0 auto;color:var(--ink-soft);font-size:14.5px;">Set as "Pa<strong style="color:var(--terracotta);">RT</strong>aya," the capitalized letters spell <strong style="color:var(--terracotta);">ART</strong> inside the outsider's name. The logotype does the same work as the etymology in Section 01, one layer down.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card"><h3>The ornament</h3><p style="font-size:14.5px;color:var(--ink-soft);">The ring-and-tassel mark hanging off the wordmark and the monogram nods to Banjara jewelry, the nomadic community the name partly draws from. It is a fixed part of the mark, not a seasonal decoration.</p></div>
+      <div class="card"><h3>Lockup choice</h3><p style="font-size:14.5px;color:var(--ink-soft);">Use the primary lockup (tagline + ornament) wherever there's room to breathe — title cards, decks, print. Drop to the secondary, tagline-free lockup for favicons, merch tags, and anywhere under ~120px wide.</p></div>
+    </div>
+
+    <div style="display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin:24px 0;">
+      <div style="flex:1;background:var(--slate);padding:32px;text-align:center;">
+        <div class="mono-tile" style="background:transparent;color:#f4f1ee;margin:0 auto;">रा</div>
+        <p style="color:var(--on-dark-soft);font-size:12px;margin-top:8px;">On Outsider Slate</p>
+      </div>
+      <div style="flex:1;background:var(--terracotta);padding:32px;text-align:center;">
+        <div class="mono-tile" style="background:transparent;color:#f4f1ee;margin:0 auto;">रा</div>
+        <p style="color:rgba(244,241,238,.85);font-size:12px;margin-top:8px;">On Found Terracotta</p>
+      </div>
+    </div>
+    <p style="max-width:64ch;">The monogram, <strong>रा (Ra)</strong>, the first syllable of Paraya in Devanagari, stands alone for anywhere the full wordmark won't fit: app icons, social avatars, a stitched merch tag.</p>
+    <p class="note" style="max-width:64ch;">Minimum size: keep the monogram no smaller than ~32px on screen or 10mm in print. Below that, the tassel detail disappears and it reads as a blob. Clear space around any lockup: no less than the height of the wordmark's "T" crossbar on all sides.</p>
+
+    <div style="margin-top:24px;">
+      <h3 style="font-family:var(--serif);font-weight:700;font-size:1.05rem;margin-bottom:12px;">Never</h3>
+      <ul class="never-list">
+        <li><span class="x">✕</span>Re-color the wordmark outside slate / terracotta / white / black.</li>
+        <li><span class="x">✕</span>Stretch it off its native ratio.</li>
+        <li><span class="x">✕</span>Redraw the ART emphasis in a different weight.</li>
+        <li><span class="x">✕</span>Place a color lockup over imagery without a scrim.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="imagery">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Imagery</h2></div>
+    <p class="lede">Documentary first. Every frame should look caught, not staged, even when it's lit like a film.</p>
+    <div class="imagery-grid">
+      <div class="imagery-card"><span class="tag">Light</span><h3>Low-key, cinematic</h3><p>Real shadow. Avoid flat, evenly-lit "content" lighting — Paraya frames like a film still, not a feed grid.</p></div>
+      <div class="imagery-card"><span class="tag">Subject</span><h3>Real people, mid-thought</h3><p>Real people over models where possible. Faces mid-thought, not mid-pose.</p></div>
+      <div class="imagery-card"><span class="tag">Emotion</span><h3>Raw over polished</h3><p>A shot earns its place by carrying feeling. Reference: <em>The Outsiders</em>, the studio's flagship documentary series.</p></div>
+    </div>
+  </section>
+
+  <section id="applications">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Applications on deck</h2></div>
+    <p class="lede">What this identity needs to hold up under, in the next two quarters.</p>
+    <div class="app-row"><span class="when">Mid-Oct 2026</span><div><h3>Merch launch</h3><p>Seven made-to-order pieces. Palette and wordmark rules apply directly to garment tagging and packaging.</p></div></div>
+    <div class="app-row"><span class="when">Late Nov 2026</span><div><h3>Teaser film</h3><p>Site teaser, funding-dependent. First moving-image test of the imagery direction in Section 08.</p></div></div>
+    <div class="app-row"><span class="when">Ongoing</span><div><h3>Paraya.com rebuild</h3><p>New site drops the "Productions" suffix, moves to Paraya.com, and becomes the landing space for consultations across all six verticals.</p></div></div>
+    <div class="app-row"><span class="when">Ongoing</span><div><h3>Paya portal</h3><p>Product UI will need its own applied color-shift treatment per the logo interaction spec in Section 07.</p></div></div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Contact &amp; ownership</h2></div>
+    <p class="lede">This is a working draft, built from the live site and the Aug 28 kickoff notes, not a final asset library.</p>
+    <div class="contact-grid">
+      <div><span>Studio</span><strong>info@paraya.com</strong></div>
+      <div><span>Phone</span><strong>+91 81779 78118</strong></div>
+      <div><span>Base</span><strong>Pune, India</strong></div>
+      <div><span>Founder</span><strong>Ritu Singhal</strong></div>
+    </div>
+    <div class="status-note">Logo files, locked hex values and the typeface spec are now folded in as of v1.0. Still open: confirming a workhorse UI sans to pair with EB Garamond, and locking the merch/packaging application rules ahead of the mid-October launch.</div>
+  </section>
+
+  <footer>
+    <span>Paraya Brand Guidelines · v1.0</span>
+    <a href="project-brief.html">See the Project Brief →</a>
+  </footer>
+
+</div>
+</body>
+</html>
