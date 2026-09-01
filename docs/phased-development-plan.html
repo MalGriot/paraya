@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Paraya Website Development: Chapters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f7f7f7;
+  --surface-dark:#1f2a2e;
+  --ink:#2e4052;
+  --ink-strong:#1f2a2e;
+  --ink-soft:rgba(46,64,82,.68);
+  --ink-faint:rgba(46,64,82,.44);
+  --terracotta:#b45f41;
+  --terracotta-soft:rgba(180,95,65,.10);
+  --gold:#f6b000;
+  --line:rgba(46,64,82,.14);
+  --line-strong:rgba(46,64,82,.28);
+  --on-dark:#f4f1ee;
+  --on-dark-soft:rgba(244,241,238,.72);
+  --serif:'EB Garamond', Georgia, 'Iowan Old Style', serif;
+  --sans:'Work Sans', -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181e21;
+    --bg-alt:#1f2629;
+    --surface-dark:#0f1315;
+    --ink:#d8dde1;
+    --ink-strong:#f2efe9;
+    --ink-soft:rgba(216,221,225,.72);
+    --ink-faint:rgba(216,221,225,.46);
+    --terracotta:#e0895f;
+    --terracotta-soft:rgba(224,137,95,.14);
+    --gold:#ffcf5c;
+    --line:rgba(216,221,225,.14);
+    --line-strong:rgba(216,221,225,.26);
+    --on-dark:#f2efe9;
+    --on-dark-soft:rgba(242,239,233,.72);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181e21;
+  --bg-alt:#1f2629;
+  --surface-dark:#0f1315;
+  --ink:#d8dde1;
+  --ink-strong:#f2efe9;
+  --ink-soft:rgba(216,221,225,.72);
+  --ink-faint:rgba(216,221,225,.46);
+  --terracotta:#e0895f;
+  --terracotta-soft:rgba(224,137,95,.14);
+  --gold:#ffcf5c;
+  --line:rgba(216,221,225,.14);
+  --line-strong:rgba(216,221,225,.26);
+  --on-dark:#f2efe9;
+  --on-dark-soft:rgba(242,239,233,.72);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--terracotta);}
+
+nav.toc{
+  position:sticky;top:0;z-index:10;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  padding:14px 24px;font-size:12.5px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+nav.toc a{color:var(--terracotta);text-decoration:none;font-weight:600;}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 120px;}
+
+/* ---- Cover ---- */
+.cover{
+  border-bottom:1px solid var(--line);
+  padding:64px 0 40px;
+  margin-bottom:56px;
+}
+.cover .kicker{
+  font-family:var(--sans);
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  font-weight:600;
+  margin:0 0 18px;
+}
+.cover h1{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:clamp(2.2rem,5.6vw,3.3rem);
+  line-height:1.06;
+  letter-spacing:-.01em;
+  margin:0 0 14px;
+  color:var(--ink-strong);
+  text-wrap:balance;
+}
+.cover .dek{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--ink-soft);
+  margin:0 0 32px;
+  max-width:54ch;
+}
+.meta{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:18px 28px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.meta div span{
+  display:block;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:4px;
+}
+.meta div strong{
+  font-weight:500;
+  font-size:14.5px;
+  color:var(--ink-strong);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---- Sections ---- */
+section{margin-bottom:56px;}
+.sec-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:20px;
+}
+.sec-num{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1rem;
+  color:var(--terracotta);
+  font-variant-numeric:tabular-nums;
+  min-width:1.6em;
+}
+.sec-head h2{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1.55rem;
+  margin:0;
+  color:var(--ink-strong);
+  text-wrap:balance;
+}
+section > p, .prose p{
+  max-width:64ch;
+  color:var(--ink);
+}
+.lede{
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  max-width:60ch;
+  margin-top:-8px;
+}
+
+/* ---- Phase cards ---- */
+.phase{
+  border:1px solid var(--line);
+  border-radius:3px;
+  margin-bottom:20px;
+  overflow:hidden;
+  background:var(--bg);
+}
+.phase-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:22px 24px;
+  background:var(--bg-alt);
+  border-bottom:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.phase-head .num{
+  font-family:var(--serif);
+  font-weight:800;
+  font-size:1.6rem;
+  color:var(--terracotta);
+  min-width:1.4em;
+}
+.phase-head h3{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1.2rem;
+  margin:0;
+  color:var(--ink-strong);
+  flex:1;
+}
+.phase-head .price{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:15px;
+  color:var(--ink-strong);
+  background:var(--terracotta-soft);
+  border:1px solid var(--terracotta);
+  border-radius:999px;
+  padding:5px 14px;
+  white-space:nowrap;
+}
+.phase-body{padding:22px 24px;}
+.phase-body .label{
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  font-weight:600;
+  margin:0 0 6px;
+}
+.phase-body .label:not(:first-child){margin-top:18px;}
+.phase-body p{margin:0;font-size:14.5px;color:var(--ink);max-width:66ch;}
+
+/* ---- Investment table ---- */
+.owntable{width:100%;border-collapse:collapse;font-size:14px;}
+.owntable th{
+  text-align:left;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  font-weight:600;
+  padding:0 12px 10px 0;
+  border-bottom:1px solid var(--line-strong);
+}
+.owntable td{
+  padding:12px 12px 12px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--ink);
+  vertical-align:top;
+}
+.owntable td.amt{color:var(--ink-strong);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.owntable tr.total td{border-bottom:none;padding-top:16px;font-weight:700;color:var(--ink-strong);}
+.owntable tr.total td.amt{color:var(--terracotta);font-size:15.5px;}
+
+/* ---- Cards / grids ---- */
+.grid{
+  display:grid;
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+}
+.grid.cols-2{grid-template-columns:1fr 1fr;}
+.card{
+  background:var(--bg);
+  padding:20px 22px;
+}
+.card h3{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:14.5px;
+  margin:0 0 6px;
+  color:var(--ink-strong);
+}
+.card p{
+  margin:0;
+  font-size:14px;
+  color:var(--ink-soft);
+}
+.card .tag{
+  display:inline-block;
+  font-size:10.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  font-weight:600;
+  margin-bottom:8px;
+}
+@media (max-width:640px){
+  .grid.cols-2{grid-template-columns:1fr;}
+}
+
+/* ---- Callout ---- */
+.callout{
+  background:var(--terracotta-soft);
+  border-left:3px solid var(--terracotta);
+  padding:16px 20px;
+  border-radius:0 2px 2px 0;
+  font-size:14.5px;
+  color:var(--ink);
+}
+.callout strong{color:var(--ink-strong);}
+
+/* ---- Open items ---- */
+.open-list{list-style:none;margin:0;padding:0;}
+.open-list li{
+  display:flex;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14.5px;
+}
+.open-list li:last-child{border-bottom:none;}
+.open-list .dot{
+  flex:none;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--terracotta);
+  margin-top:8px;
+}
+
+footer{
+  margin-top:80px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-size:12.5px;
+  color:var(--ink-faint);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <a href="project-brief.html">← Project Brief</a>
+  <a href="brand-guidelines.html">Brand Guidelines →</a>
+</nav>
+
+<div class="wrap">
+
+  <div class="cover">
+    <p class="kicker">Website Development · Told in Chapters</p>
+    <h1>Paraya Website Development</h1>
+    <p class="dek">Six focused monthly releases, each a real and visible piece of the Paraya website, with no full-project commitment required upfront.</p>
+    <div class="meta">
+      <div><span>Prepared for</span><strong>Ritu Singhal, Paraya</strong></div>
+      <div><span>Prepared by</span><strong>Mal Griot</strong></div>
+      <div><span>Investment</span><strong>₹25,000 / chapter</strong></div>
+      <div><span>Total scope</span><strong>₹1,50,000 (6 chapters)</strong></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">A</span><h2>How this works</h2></div>
+    <p class="lede">Instead of committing to the entire website at once, development happens through six focused monthly releases. Each chapter is ₹25,000, and each one produces a meaningful, visible part of the overall Paraya website, allowing priorities to evolve as the business develops.</p>
+    <p>Payment is made at the beginning of each chapter. There's no requirement to commit to all six at once; the next chapter is scheduled whenever the current one is complete and Paraya is ready to continue.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">B</span><h2>The six chapters</h2></div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="num">1</span><h3>Presence</h3><span class="price">₹25,000</span></div>
+      <div class="phase-body">
+        <p class="label">What we'll build</p>
+        <p>A live, on-brand Paraya.com (wordmark, tagline, positioning, and a direct route to book a consultation), plus the technical foundation (hosting, CMS, analytics) the rest of the site builds on.</p>
+        <p class="label">What will be available at the end</p>
+        <p>Paraya.com is live and bookable, immediately.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="num">2</span><h3>Core Experience</h3><span class="price">₹25,000</span></div>
+      <div class="phase-body">
+        <p class="label">What we'll build</p>
+        <p>The full homepage, including an interactive hero built around Paraya's "shelter for the outliers" identity, and the signature Paya gateway: the color-shift transition that signals the move into Paya's world.</p>
+        <p class="label">What will be available at the end</p>
+        <p>A homepage that carries the brand's full personality, and a working, permanent Paya gateway.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="num">3</span><h3>Content &amp; Verticals</h3><span class="price">₹25,000</span></div>
+      <div class="phase-body">
+        <p class="label">What we'll build</p>
+        <p>The About/Philosophy page, the Work/Portfolio page, and the Contact/Consultation booking page, with all six of Paraya's business verticals made visible and legible across the site.</p>
+        <p class="label">What will be available at the end</p>
+        <p>A complete core site. The page structures, layouts, and interactions will be built in this chapter, with final copy, photography, and project details incorporated as they're supplied.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="num">4</span><h3>Merch Experience</h3><span class="price">₹25,000</span></div>
+      <div class="phase-body">
+        <p class="label">What we'll build</p>
+        <p>The full merch section: product pages for all seven pieces, the catalogue presentation, and a Linktree-style navigation layer connecting Instagram to the site.</p>
+        <p class="label">What will be available at the end</p>
+        <p>A complete, browsable merch experience, ready to go live in full once the catalogue shoot and final product details are in.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="num">5</span><h3>Commerce &amp; Paya Connection</h3><span class="price">₹25,000</span></div>
+      <div class="phase-body">
+        <p class="label">What we'll build</p>
+        <p>Direct checkout and payment on Paraya.com, and the connection of the Paya gateway to Paya's live destination once that team's platform is ready.</p>
+        <p class="label">What will be available at the end</p>
+        <p>A working store, and a fully connected Paya gateway.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="num">6</span><h3>Integration &amp; Launch</h3><span class="price">₹25,000</span></div>
+      <div class="phase-body">
+        <p class="label">What we'll build</p>
+        <p>Full testing across every page and device, performance checks, and hands-on launch support.</p>
+        <p class="label">What will be available at the end</p>
+        <p>A fully verified, launch-ready Paraya website.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">C</span><h2>Investment summary</h2></div>
+    <table class="owntable">
+      <tr><th>Chapter</th><th>Investment</th><th>Payment timing</th></tr>
+      <tr><td>1 · Presence</td><td class="amt">₹25,000</td><td>Due at commencement of Chapter 1</td></tr>
+      <tr><td>2 · Core Experience</td><td class="amt">₹25,000</td><td>Due at commencement of Chapter 2</td></tr>
+      <tr><td>3 · Content &amp; Verticals</td><td class="amt">₹25,000</td><td>Due at commencement of Chapter 3</td></tr>
+      <tr><td>4 · Merch Experience</td><td class="amt">₹25,000</td><td>Due at commencement of Chapter 4</td></tr>
+      <tr><td>5 · Commerce &amp; Paya Connection</td><td class="amt">₹25,000</td><td>Due at commencement of Chapter 5</td></tr>
+      <tr><td>6 · Integration &amp; Launch</td><td class="amt">₹25,000</td><td>Due at commencement of Chapter 6</td></tr>
+      <tr class="total"><td>Total</td><td class="amt">₹1,50,000</td><td></td></tr>
+    </table>
+    <p style="margin-top:16px;">This is a chapter-by-chapter development engagement, not a financing plan for a single project fee. Each payment activates that chapter's work. The next chapter is scheduled whenever Paraya is ready to continue; there's no fixed calendar the project has to follow.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">D</span><h2>Project flexibility</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h3>Prioritize freely</h3><p>Focus the most urgent requirements first.</p></div>
+      <div class="card"><h3>Launch progressively</h3><p>Useful parts of the site go live as each chapter completes.</p></div>
+      <div class="card"><h3>Evolve the plan</h3><p>New information or ideas can be incorporated as the project develops.</p></div>
+      <div class="card"><h3>Pause anytime</h3><p>The project can pause between chapters and resume when ready.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">E</span><h2>Content &amp; asset preparation</h2></div>
+    <p>The website build progresses alongside the supply of copy, project descriptions, photography, video, team information, merch information, and brand references. This is normal project workflow: development and content-gathering happen in parallel, not one after the other.</p>
+    <p>Each chapter is built using placeholders where appropriate, so the structure, design, and functionality can move forward without waiting on final materials. Final publication of asset-dependent sections (like the Work/Portfolio page or the merch catalogue) happens as the relevant approved content comes in.</p>
+    <div class="callout">A few pieces also depend on decisions or setup from outside providers: Calendly for booking, a payment processor for merch, hosting/CMS/analytics providers, and Paya's own team for their side of the gateway connection. These are handled as each chapter reaches them.</div>
+  </section>
+
+  <footer>
+    <span>Paraya Website Development: Told in Chapters · v1.0</span>
+    <a href="project-brief.html">← Back to Project Brief</a>
+  </footer>
+
+</div>
+</body>
+</html>
